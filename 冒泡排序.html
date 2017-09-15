@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  #demo{
+    overflow: hidden;
+  }
+  #demo input{
+    height: 29px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding-left: 10px;
+    margin-right: 20px;
+    float: left;
+  }
+  #demo span{
+    display: block;
+    float: left;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    border-radius: 3px;
+    background: #0AA1E5;
+    color: #FFF;
+  }
+  #result{
+    margin-top: 20px;
+  }
+</style>
+<body>
+<div id="demo"><input type="text" name="demo" placeholder="5,6,4,2,8"/><span>排序</span></div>
+<div id="result"></div>
+<script>
+
+var clickSpan = document.getElementsByTagName('span')[0];
+var getResult = document.getElementById('result');
+function bubbleSort(arr) {
+  debugger;
+  var len = arr.length;
+  for(var i=0;i<len;i++){
+    for(var j=0;j<len-1-i;j++){
+      var temp = arr[j+1];
+      arr[j+1] = arr[j];
+      arr[j] = temp;
+    }
+  }
+  return arr;
+  console.log(arr);
+}
+clickSpan.addEventListener('click',function(){
+  var getInput = document.getElementsByTagName('input')[0];
+  var arr = getInput.value;
+  if(arr == ''){
+    alert('请输入数组');
+    getInput.focus();
+  }else{
+    arr = arr.split(',');
+    var arr2 = [];
+    arr.forEach(function(data,index,arr){  
+      arr2.push(+data);  
+    });
+    bubbleSort(arr2);
+    getResult.innerHTML = '排序结果为：' + arr2;
+  }
+  
+})
+
+</script>
+</body>
+</html>
